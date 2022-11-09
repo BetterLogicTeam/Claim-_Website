@@ -167,6 +167,7 @@ export default function Get_Data() {
                     const web3 = window.web3;	
                     let contractOf = new web3.eth.Contract(airdrop_ABI, airdrop);
                     let allowance =await contractOf.methods.allowance(token,acc).call()
+                    allowance=web3.utils.fromWei((allowance).toString())
                     setclaim(allowance)        
                
             } catch (e) {	
@@ -244,7 +245,7 @@ export default function Get_Data() {
                                                 <span class="visually-hidden">Loading...</span>
                                             </div>
                                         </>
-                                            : "Send"
+                                            : "Submit"
 
                                     }
                                 </button>
@@ -268,8 +269,8 @@ export default function Get_Data() {
 
                         <div className="card claim_card">
                             <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label">Claimable</label>
-                                <p className='claim_para'>{claim} </p>
+                                <label for="exampleFormControlInput1" class="form-label">Claimable Hexcel Token</label>
+                                <p className='claim_para'>{claim + " Hexcel"} </p>
                             </div>
 
                             <div class="col-auto">
