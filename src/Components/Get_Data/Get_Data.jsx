@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify';
 import { loadWeb3 } from '../apis/api';
 import { airdrop, airdrop_ABI } from '../utilies/Contract';
@@ -15,6 +15,9 @@ export default function Get_Data() {
     const [excelFileError, setexcelFileError] = useState(null)
     const [exclData, setexclData] = useState(null)
     const [loader, setloader] = useState(false)
+    const [spinner, setspinner] = useState(false)
+    const [claim, setclaim] = useState()
+
 
 
     console.log(excelFile);
@@ -78,48 +81,107 @@ export default function Get_Data() {
     }
 
 
-    const Submit_data = async () => {
-        let acc = await loadWeb3();
-        if (acc == "No Wallet") {
-
-        }
-        else if (acc == "Wrong Network") {
-
-        } else {
-
-            try {
-                setloader(true)
-                // console.log("pathArray", addressesValue, AmountsValue);
-
-                // let pathArray = addressesValue.split(',');
-                // let Number_Array = AmountsValue.split(',')
-
-                if (addressesValue.length == AmountsValue.length) {
-
-                    const web3 = window.web3;
-                    let contractOf = new web3.eth.Contract(airdrop_ABI, airdrop);
-                   
-                    await contractOf.methods.setClaimers(tokenValue, addressesValue, AmountsValue).send({
-                        from: acc
-                    });
-                    toast.success('Transition Confirm')
-                    setloader(false)
 
 
-                } else {
-                    toast.error("Array length is not match")
-                    setloader(false)
+    const Submit_data = async () => {	
+        let acc = await loadWeb3();	
+        if (acc == "No Wallet") {	
+        }	
+        else if (acc == "Wrong Network") {	
+        } else {	
+            try {	
+                setloader(true)	
 
-
-                }
-
-            } catch (e) {
-                console.log("Error While data", e);
-                setloader(false)
-
-            }
-        }
+                if (addressesValue.length == AmountsValue.length) {	
+                    const web3 = window.web3;	
+                    let contractOf = new web3.eth.Contract(airdrop_ABI, airdrop);	
+                    let ownerAdress = await contractOf.methods.owner().call()	
+                    if (ownerAdress == acc) {	
+                        await contractOf.methods.multisendToken(tokenValue, addressesValue, AmountsValue).send({	
+                            from: acc	
+                        });	
+                        toast.success('Transition Confirm')	
+                        setloader(false)	
+                    }	
+                    else {	
+                        toast.error("Owner account does not match")	
+                        setloader(false)	
+                    }	
+                } else {	
+                    toast.error("Array length is not match")	
+                    setloader(false)	
+                }	
+            } catch (e) {	
+                console.log("Error While data", e);	
+                setloader(false)	
+            }	
+        }	
     }
+
+    const claimToken = async () => {	
+        let acc = await loadWeb3();	
+        if (acc == "No Wallet") {	
+        }	
+        else if (acc == "Wrong Network") {	
+        } else {	
+            try {	
+                setspinner(true)	
+                    const web3 = window.web3;	
+                    let contractOf = new web3.eth.Contract(airdrop_ABI, airdrop);
+                    let tokenOf = new web3.eth.Contract(token_ABI, token);
+
+                    let allowance =await contractOf.methods.allowance(token,acc).call()
+                    let contractBalance= await tokenOf.methods.balanceOf(airdrop).call()
+                    if(allowance>0){
+                    if(contractBalance=>allowance)	{
+                        await contractOf.methods.claimAirdrop(token).send({	
+                            from: acc	
+                        });	
+                        toast.success('Transition Confirm')	
+                        setspinner(false)
+                    }
+                    else {	
+                        toast.error("Contract is ran out of funds!")	
+                        setspinner(false)	
+                    }
+                    }
+                    else{
+                        toast.error("Your allowance is zero!")	
+                        setspinner(false)	
+                    }
+               
+            } catch (e) {	
+                console.log("Error While data", e);	
+                setspinner(false)	
+            }	
+        }	
+    }
+
+    const getClaimable = async () => {	
+        let acc = await loadWeb3();	
+        if (acc == "No Wallet") {	
+        }	
+        else if (acc == "Wrong Network") {	
+        } else {	
+            try {	
+                    const web3 = window.web3;	
+                    let contractOf = new web3.eth.Contract(airdrop_ABI, airdrop);
+                    let allowance =await contractOf.methods.allowance(token,acc).call()
+                    setclaim(allowance)        
+               
+            } catch (e) {	
+                console.log("Error While data", e);	
+                	
+            }	
+        }	
+    }
+
+    useEffect(() => {
+        getClaimable()
+      },[])
+
+   
+
 
     return (
         <div>
@@ -183,6 +245,42 @@ export default function Get_Data() {
                                             </div>
                                         </>
                                             : "Send"
+
+                                    }
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div className="col-lg-2">
+
+                    </div>
+                </div>
+            </div>
+
+            <div className="container my-5">
+                <div className="row">
+                    <div className="col-lg-2">
+
+                    </div>
+
+                    <div className="col-lg-8">
+
+                        <div className="card claim_card">
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Claimable</label>
+                                <p className='claim_para'>{claim} </p>
+                            </div>
+
+                            <div class="col-auto">
+                                <button className='claim_btn'  onClick={() => claimToken()}>
+                                {
+                                        spinner ? <>
+                                            <div class="spinner-border" role="status">
+                                                <span class="visually-hidden">Loading...</span>
+                                            </div>
+                                        </>
+                                            : "Get Claim"
 
                                     }
                                 </button>
