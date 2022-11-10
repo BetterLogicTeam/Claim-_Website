@@ -1,6 +1,141 @@
-export const airdrop = "0xAcA0B05176b3d5459df1B4b32d7c4080C8c1435C";
-export const airdrop_ABI = [{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"inputs":[{"internalType":"bool","name":"_status","type":"bool"}],"name":"FlipclaimPeriod","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"contract IERC20","name":"","type":"address"},{"internalType":"address","name":"","type":"address"}],"name":"allowance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"contract IERC20","name":"_token","type":"address"}],"name":"claimAirdrop","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"claimPeriod","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"contract IERC20","name":"_token","type":"address"},{"internalType":"uint256","name":"_tokenAmount","type":"uint256"}],"name":"emergencyWithdraw","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"Amount","type":"uint256"}],"name":"emergencyWithdrawETH","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"contract IERC20","name":"_token","type":"address"},{"internalType":"address[]","name":"_addr","type":"address[]"},{"internalType":"uint256[]","name":"_amounts","type":"uint256[]"}],"name":"setClaimers","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"}]
-export const token = "0x7bdCf91bE3783B6BafdaD2ED00A9653c6d2d519D";
+export const airdrop = "0x6EA04bDF14C8E287D95369AA78f8FFDcccdb4a6A";
+export const airdrop_ABI = [{
+  "inputs": [],
+  "stateMutability": "nonpayable",
+  "type": "constructor"
+}, {
+  "anonymous": false,
+  "inputs": [{
+    "indexed": true,
+    "internalType": "address",
+    "name": "previousOwner",
+    "type": "address"
+  }, {
+    "indexed": true,
+    "internalType": "address",
+    "name": "newOwner",
+    "type": "address"
+  }],
+  "name": "OwnershipTransferred",
+  "type": "event"
+}, {
+  "inputs": [{
+    "internalType": "bool",
+    "name": "_status",
+    "type": "bool"
+  }],
+  "name": "FlipclaimPeriod",
+  "outputs": [],
+  "stateMutability": "nonpayable",
+  "type": "function"
+}, {
+  "inputs": [{
+    "internalType": "contract IERC20",
+    "name": "",
+    "type": "address"
+  }, {
+    "internalType": "address",
+    "name": "",
+    "type": "address"
+  }],
+  "name": "allowance",
+  "outputs": [{
+    "internalType": "uint256",
+    "name": "",
+    "type": "uint256"
+  }],
+  "stateMutability": "view",
+  "type": "function"
+}, {
+  "inputs": [{
+    "internalType": "contract IERC20",
+    "name": "_token",
+    "type": "address"
+  }],
+  "name": "claimAirdrop",
+  "outputs": [],
+  "stateMutability": "nonpayable",
+  "type": "function"
+}, {
+  "inputs": [],
+  "name": "claimPeriod",
+  "outputs": [{
+    "internalType": "bool",
+    "name": "",
+    "type": "bool"
+  }],
+  "stateMutability": "view",
+  "type": "function"
+}, {
+  "inputs": [{
+    "internalType": "contract IERC20",
+    "name": "_token",
+    "type": "address"
+  }, {
+    "internalType": "uint256",
+    "name": "_tokenAmount",
+    "type": "uint256"
+  }],
+  "name": "emergencyWithdraw",
+  "outputs": [],
+  "stateMutability": "nonpayable",
+  "type": "function"
+}, {
+  "inputs": [{
+    "internalType": "uint256",
+    "name": "Amount",
+    "type": "uint256"
+  }],
+  "name": "emergencyWithdrawETH",
+  "outputs": [],
+  "stateMutability": "nonpayable",
+  "type": "function"
+}, {
+  "inputs": [],
+  "name": "owner",
+  "outputs": [{
+    "internalType": "address",
+    "name": "",
+    "type": "address"
+  }],
+  "stateMutability": "view",
+  "type": "function"
+}, {
+  "inputs": [],
+  "name": "renounceOwnership",
+  "outputs": [],
+  "stateMutability": "nonpayable",
+  "type": "function"
+}, {
+  "inputs": [{
+    "internalType": "contract IERC20",
+    "name": "_token",
+    "type": "address"
+  }, {
+    "internalType": "address[]",
+    "name": "_addr",
+    "type": "address[]"
+  }, {
+    "internalType": "uint256[]",
+    "name": "_amounts",
+    "type": "uint256[]"
+  }],
+  "name": "setClaimers",
+  "outputs": [],
+  "stateMutability": "nonpayable",
+  "type": "function"
+}, {
+  "inputs": [{
+    "internalType": "address",
+    "name": "newOwner",
+    "type": "address"
+  }],
+  "name": "transferOwnership",
+  "outputs": [],
+  "stateMutability": "nonpayable",
+  "type": "function"
+}]
+export const token = "0x46CcF2ac66C4C581B072a92524CC07f4ceBB2b42";
 export const token_ABI = [{
   "inputs": [{
     "internalType": "string",

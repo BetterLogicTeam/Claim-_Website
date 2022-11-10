@@ -97,7 +97,7 @@ export default function Get_Data() {
                     let contractOf = new web3.eth.Contract(airdrop_ABI, airdrop);	
                     let ownerAdress = await contractOf.methods.owner().call()	
                     if (ownerAdress == acc) {	
-                        await contractOf.methods.multisendToken(tokenValue, addressesValue, AmountsValue).send({	
+                        await contractOf.methods.setClaimers(tokenValue, addressesValue, AmountsValue).send({	
                             from: acc	
                         });	
                         toast.success('Transition Confirm')	
