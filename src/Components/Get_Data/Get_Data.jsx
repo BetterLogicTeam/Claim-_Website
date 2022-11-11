@@ -132,6 +132,7 @@ export default function Get_Data() {
 
                     let allowance =await contractOf.methods.allowance(token,acc).call()
                     let contractBalance= await tokenOf.methods.balanceOf(airdrop).call()
+                
                     if(allowance>0){
                     if(contractBalance=>allowance)	{
                         await contractOf.methods.claimAirdrop(token).send({	
@@ -188,7 +189,7 @@ export default function Get_Data() {
         <div>
 
 
-
+{/* 
             <div className="container mt-5">
                 <div className="row">
                     <div className="col-lg-2">
@@ -214,9 +215,9 @@ export default function Get_Data() {
 
                     </div>
                 </div>
-            </div>
+            </div> */}
 
-            <div className="container mt-5">
+            {/* <div className="container mt-5">
                 <div className="row">
                     <div className="col-lg-2">
 
@@ -257,7 +258,7 @@ export default function Get_Data() {
 
                     </div>
                 </div>
-            </div>
+            </div> */}
 
             <div className="container my-5">
                 <div className="row">

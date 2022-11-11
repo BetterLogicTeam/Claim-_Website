@@ -135,7 +135,7 @@ export const airdrop_ABI = [{
   "stateMutability": "nonpayable",
   "type": "function"
 }]
-export const token = "0x46CcF2ac66C4C581B072a92524CC07f4ceBB2b42";
+export const token = "0x84903595953a8dE930F13E1A9dAb93D2a835f632";
 export const token_ABI = [{
   "inputs": [{
     "internalType": "string",
@@ -179,7 +179,7 @@ export const token_ABI = [{
       "name": "walletCharityFeeInBNB",
       "type": "bool"
     }],
-    "internalType": "struct HEXEL.FeeWallet",
+    "internalType": "struct HEXCEL.FeeWallet",
     "name": "wallet",
     "type": "tuple"
   }, {
@@ -220,7 +220,7 @@ export const token_ABI = [{
       "name": "setRewardFee",
       "type": "uint8"
     }],
-    "internalType": "struct HEXEL.Fee",
+    "internalType": "struct HEXCEL.Fee",
     "name": "fee",
     "type": "tuple"
   }, {
@@ -1202,40 +1202,6 @@ export const token_ABI = [{
   "type": "function"
 }, {
   "inputs": [{
-    "internalType": "uint8",
-    "name": "taxFee",
-    "type": "uint8"
-  }, {
-    "internalType": "uint8",
-    "name": "liquidityFee",
-    "type": "uint8"
-  }, {
-    "internalType": "uint8",
-    "name": "burnFee",
-    "type": "uint8"
-  }, {
-    "internalType": "uint8",
-    "name": "walletFee",
-    "type": "uint8"
-  }, {
-    "internalType": "uint8",
-    "name": "buybackFee",
-    "type": "uint8"
-  }, {
-    "internalType": "uint8",
-    "name": "walletCharityFee",
-    "type": "uint8"
-  }, {
-    "internalType": "uint8",
-    "name": "rewardFee",
-    "type": "uint8"
-  }],
-  "name": "setAllFeePercent",
-  "outputs": [],
-  "stateMutability": "nonpayable",
-  "type": "function"
-}, {
-  "inputs": [{
     "internalType": "uint256",
     "name": "buyBackLimit",
     "type": "uint256"
@@ -1261,26 +1227,6 @@ export const token_ABI = [{
     "type": "address"
   }],
   "name": "setFeeWalletCharity",
-  "outputs": [],
-  "stateMutability": "nonpayable",
-  "type": "function"
-}, {
-  "inputs": [{
-    "internalType": "uint256",
-    "name": "maxTxPercent",
-    "type": "uint256"
-  }],
-  "name": "setMaxTxPercent",
-  "outputs": [],
-  "stateMutability": "nonpayable",
-  "type": "function"
-}, {
-  "inputs": [{
-    "internalType": "uint256",
-    "name": "maxWalletPercent",
-    "type": "uint256"
-  }],
-  "name": "setMaxWalletPercent",
   "outputs": [],
   "stateMutability": "nonpayable",
   "type": "function"
